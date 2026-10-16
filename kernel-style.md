@@ -35,8 +35,7 @@ See changelog-style.md for body structure (problem→cause→fix→effect),
 verbatim KASAN/WARNING/Call Trace artifacts, safety paragraph
 ("should be safe because..." naming lock/snapshot), syzkaller chain
 (2-4 sentences, file:function per step, sister-site contrast, concrete OOB
-example), audience stripping, trailers (Fixes+stable, Reported-by, Link,
-Assisted-by), and tone.
+example), audience stripping, trailers (Fixes+stable, Reported-by, Link), and tone.
 
 ## 2. Code comments — summary
 Full rules in [changelog-style.md §2](./changelog-style.md#2-code-comments). Highlights:

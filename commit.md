@@ -41,7 +41,7 @@ On demand during Phase 3 if needed:
  - Expect several passes; re-read the finished draft and compress again, per CL-35.
  - Explain WHY with data; paste raw kernel message verbatim for bugfixes — KASAN/WARNING/oops/Call Trace as indented literal block, not paraphrase. Must appear, not optional.
  - Write for upstream audience not internal tooling per audience relevancy rule — strip internal agent nicknames, private bucket hashes without public syzbot link, internal branch names, hostnames, build IDs, vendor ticket IDs. Use generic phrasing.
- - Trailers: Fixes: + Cc: stable paired, Reported-by, Link to lore, Assisted-by for non-trivial tool work, Signed-off-by for DCO certification.
+ - Trailers: Fixes: + Cc: stable paired, Reported-by, Link to lore, Signed-off-by for DCO certification.
  - Tone calm factual engineer-to-engineer, active voice, no marketing adjectives hedging filler em-dash sprinkling or recap.
 
 3. Load peer-review.md mandatory during Phase 3 changelog drafting as final self-review gate before git commit.
@@ -56,12 +56,11 @@ On demand during Phase 3 if needed:
 
    **What these tools do not cover.** checkpatch reports "no obvious style problems and is ready for submission" on a patch whose changelog asserts an unobserved splat, whose comment restates the code it sits above, or which leaves a call the change has made a no-op. It checks form, not truth, necessity, or whether a comment earns its space. A clean checkpatch run is not evidence that steps 1-5 were done.
 
-7. Verify commit trailers per CONTRIBUTING.md §5 commit trailers required: every commit must end with both trailers in order after blank line separating from commit message body:
+7. Verify commit trailer per CONTRIBUTING.md §5 commit trailer required: every commit must end with the Signed-off-by trailer after blank line separating from commit message body:
  ```
- Assisted-by: LLM [TOOL1] [TOOL2]
  Signed-off-by: Your Name <your.email@example.com>
  ```
- Format per `Documentation/process/coding-assistants.rst`: `Assisted-by: LLM` with optional tool list (e.g. `Assisted-by: LLM syzkaller`, `Assisted-by: LLM coccinelle sparse`). `[TOOL]` are public analysis tools (coccinelle sparse smatch syzkaller clang-tidy). Historical `PROVIDER:MODEL [TOOL]` form (e.g. `Claude:claude-opus-4-8`) superseded upstream by `816d9992d9ed` (docs-7.3); checkpatch now only checks value exists `2a8d68338ee7`. Multiple lines allowed only if distinct tool sets need documenting, normally one suffices. List only public model/tools never internal-only codenames. An AI agent must never add its own Signed-off-by — only human SOB certifies DCO per kernel process.
+ An AI agent must never add its own Signed-off-by — only human SOB certifies DCO per kernel process.
 
 8. If this patch is part of a multi-patch series with a cover letter, before sending run the cover-letter verification pass per patch-series.md §5: for every number and every "patch N does/is the only one that..." claim in the cover letter, open that specific patch's own current changelog and diff and confirm the exact match. Do this as its own explicit pass over the finished cover letter, separate from writing it — a cover letter drafted earlier in the process (or regenerated via `git format-patch --cover-letter` after a patch changed) is exactly the case this catches. Do not send on the strength of having verified the patches alone.
 

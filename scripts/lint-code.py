@@ -41,7 +41,7 @@ leave it in the prose rules, where it does its work by priming the author
 rather than by gating the commit.
 
 Overlap with checkpatch.pl is avoided: commit-hash citation (GIT_COMMIT_ID,
-BAD_FIXES_TAG) and Assisted-by shape are already enforced there.
+BAD_FIXES_TAG) is already enforced there.
 
 Usage:
   ./scripts/lint-code.py <sha>

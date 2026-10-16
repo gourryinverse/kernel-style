@@ -68,4 +68,4 @@ reads oddly next to get_user_pages_remote(). Name it for its action.
 - `EXTERNAL` = has lore Message-ID or public commit hash verifiable via `git show` / lore.kernel.org
 - `INTERNAL DRAFT` = session-local, never posted, no external reviewer, illustrative only — must not be cited as evidence of upstream style, kept only to show cut-test / compression pattern
 
-Add more EXTERNAL examples with `git log --grep Assisted-by` + lore link.
+Add more EXTERNAL examples with lore link.
