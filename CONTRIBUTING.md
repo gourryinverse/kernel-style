@@ -100,16 +100,14 @@ This repository is public on GitHub and intended for upstream kernel contributor
 - Inline rule provenance (who reviewed or approved a change, when) does not belong in normative hot files. Use git commit history for authorship and dates. If provenance aids understanding, put it in the matching *-rationale.md* file with public LKML Message-IDs and public reviewer names only — never internal codenames.
 - Before publishing a commit, re-read the diff as if you are an external reviewer with zero internal context. If anything requires private context to parse, rewrite it.
 
-### 5. Commit trailers required
+### 5. Commit trailer required
 
-Every commit to this repository must end with both trailers in this order, after a blank line separating them from the commit message body:
+Every commit to this repository must end with this trailer, after a blank line separating it from the commit message body:
 
 ```
-Assisted-by: LLM [TOOL1] [TOOL2]
 Signed-off-by: Rik van Riel <riel@surriel.com>
 ```
 
-* `Assisted-by` acknowledges non-trivial tool assistance per `Documentation/process/coding-assistants.rst`. Format is `Assisted-by: LLM [TOOL1] [TOOL2]`, e.g. `Assisted-by: LLM syzkaller`, `Assisted-by: LLM coccinelle sparse`. `[TOOL]` are optional specialized analysis tools (coccinelle sparse smatch syzkaller clang-tidy), not basic tools (git gcc make editors). List only public tools, never internal-only tooling. Multiple Assisted-by lines allowed only if distinct tool sets need documenting, normally one suffices. Historical form in this repo was `PROVIDER:MODEL [TOOL]` (e.g. `Claude:claude-opus-4-8`, `Hermes:muse-spark-1.2 syzkaller`) — superseded upstream by `LLM` (`816d9992d9ed coding-assistants: simplify attribution`, merged in docs-7.3, checkpatch now only checks that a value exists `2a8d68338ee7`). New commits use the simplified `LLM` form to match upstream.
 * `Signed-off-by` certifies Developer Certificate of Origin per usual kernel process. An AI agent must never add its own Signed-off-by — only human SOB.
 
 * No other trailers are required unless fixing a prior commit (then add `Fixes:` with full 12-character commit hash and subject context in body, per kernel-style rules themselves).
